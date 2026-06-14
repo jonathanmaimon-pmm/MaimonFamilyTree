@@ -63,7 +63,7 @@
       </span>`;
     node.addEventListener("click", function (e) {
       e.stopPropagation();
-      if (opts.focus) { selectPerson(id); return; }
+      if (opts.focus) { selectPerson(id); openDetail(); return; }
       focusOn(id);
     });
     return node;
@@ -132,7 +132,19 @@
 
     drawConnectors(parents, spouses, children);
     updateChrome(focus);
-    if (!state.selectedId) selectPerson(state.focusId, true);
+    // Keep the detail panel populated, but on mobile never auto-open it —
+    // the tree stays primary until the user taps the centered person.
+    selectPerson(state.focusId, true);
+  }
+
+  function isMobile() {
+    return window.matchMedia("(max-width: 880px)").matches;
+  }
+  function openDetail() {
+    el.detail.classList.add("active");
+  }
+  function closeDetail() {
+    el.detail.classList.remove("active");
   }
 
   /* --------------------------- SVG connector lines --------------------------- */
@@ -258,6 +270,7 @@
     ).join("");
 
     el.detail.innerHTML = `
+      <button class="detail-close" data-action="close" aria-label="Back to tree">← Back to tree</button>
       <div class="detail-head" style="--c:${line.color}">
         ${avatarHTML(p, 92)}
         <h2>${escapeHTML(p.name)}</h2>
@@ -281,11 +294,15 @@
       ${relationLinks("Children", children)}
     `;
 
-    el.detail.querySelector('[data-action="focus"]').addEventListener("click", () => focusOn(id));
+    el.detail.querySelector('[data-action="focus"]').addEventListener("click", () => {
+      focusOn(id);
+      if (isMobile()) closeDetail();
+    });
     el.detail.querySelector('[data-action="edit"]').addEventListener("click", () => openEditor(id));
+    const closeBtn = el.detail.querySelector('[data-action="close"]');
+    if (closeBtn) closeBtn.addEventListener("click", closeDetail);
     el.detail.querySelectorAll("[data-goto]").forEach((b) =>
       b.addEventListener("click", () => { focusOn(b.dataset.goto); }));
-    el.detail.classList.add("active");
   }
 
   /* ------------------------------- editor ---------------------------------- */
@@ -399,7 +416,12 @@
     });
 
     document.getElementById("export-btn").addEventListener("click", exportData);
-    document.getElementById("home-btn").addEventListener("click", () => focusOn(S.base.roots[0]));
+    document.getElementById("home-btn").addEventListener("click", () => { focusOn(S.base.roots[0]); closeDetail(); });
+
+    // On mobile the detail panel overlays the tree; tapping the tree closes it.
+    document.querySelector(".canvas").addEventListener("click", (e) => {
+      if (isMobile() && !e.target.closest(".person")) closeDetail();
+    });
 
     const modal = document.getElementById("editor");
     modal.querySelector(".editor-save").addEventListener("click", saveEditor);
@@ -425,6 +447,7 @@
       if (e.key === "Escape") {
         document.getElementById("editor").classList.remove("active");
         el.results.classList.remove("active");
+        if (isMobile()) closeDetail();
       }
     });
 
