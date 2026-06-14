@@ -407,7 +407,9 @@ window.FAMILY_DATA = {
     "leopold-waserman": {
       name: "Leopold Waserman", gender: "M", line: "waserman",
       birth: { date: "Feb 2, 1924", place: "Kraków" }, death: { deceased: true },
-      spouses: ["aviva-liberman"], parents: ["majer-waserman", "chaja-thaller"]
+      spouses: ["aviva-liberman"], parents: ["majer-waserman", "chaja-thaller"],
+      alsoKnownAs: "Maimon (surname assumed after World War II)",
+      notes: "Adopted the surname \"Maimon\" after the war; the name carried by his descendants and the namesake of this family tree."
     }
   }
 };
