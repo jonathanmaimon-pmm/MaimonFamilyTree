@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maimon Family Tree</title>
+  <meta name="description" content="An interactive, browsable family tree tracing the Liberman, Gelbard, Thaller and Waserman lines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button id="home-btn" class="brand-btn" title="Back to grandparents">
+        <span class="brand-mark">✦</span>
+        <span class="brand-text">Maimon <em>Family Tree</em></span>
+      </button>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search a name or place…" autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+    <div class="topbar-actions">
+      <button id="export-btn" class="btn btn-ghost" title="Download an updated data file to commit">⬇ Export data</button>
+    </div>
+  </header>
+
+  <nav class="subbar">
+    <button id="back-btn" class="btn btn-small" disabled>← Back</button>
+    <div id="breadcrumb" class="breadcrumb"></div>
+    <div class="legend">
+      <span class="legend-title">Lines:</span>
+      <button class="legend-dot" data-line="liberman" style="--c:#3b6ea5">Liberman</button>
+      <button class="legend-dot" data-line="gelbard" style="--c:#4f8a5b">Gelbard</button>
+      <button class="legend-dot" data-line="thaller" style="--c:#c08a2e">Thaller</button>
+      <button class="legend-dot" data-line="waserman" style="--c:#8a5aa8">Waserman</button>
+    </div>
+  </nav>
+
+  <main class="layout">
+    <section class="canvas">
+      <svg id="connectors" class="connectors"></svg>
+      <div id="stage" class="stage"></div>
+    </section>
+    <aside id="detail" class="detail"></aside>
+  </main>
+
+  <div id="editor" class="modal">
+    <div class="editor-backdrop"></div>
+    <div class="editor-panel">
+      <button class="editor-close" aria-label="Close">×</button>
+      <div class="editor-body"></div>
+      <div class="editor-footer">
+        <span class="hint">Saved in your browser. Use “Export data” to make it permanent.</span>
+        <button class="btn editor-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/people.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
