@@ -233,7 +233,20 @@ window.FAMILY_DATA = {
     "aviva-liberman": {
       name: "Aviva Liberman", gender: "F", line: "liberman",
       birth: { date: "Dec 13, 1924", place: "Sosnowiec" }, death: { deceased: true },
-      spouses: ["leopold-waserman"], parents: ["gersz-lejb-liberman", "blima-gelbard"]
+      spouses: ["leopold-waserman"], parents: ["gersz-lejb-liberman", "blima-gelbard"],
+      alsoKnownAs: "Aviva Maimon",
+      bio: "Known after the war as Aviva Maimon. Born in Sosnowiec, she survived the Holocaust and was connected to the wartime Zionist resistance. After the war she made her way to Italy via the Bricha escape route across the Alps, where she and Leopold (Yehuda) Waserman/Maimon were together at a hachshara (emigration training camp). In June 1946 they immigrated to Eretz Israel aboard the Aliyah Bet ship Josiah Wedgwood, marrying in August 1946; the couple were married for more than 65 years.",
+      events: [
+        { date: "Dec 13, 1924", text: "Born in Sosnowiec" },
+        { date: "1945–1946", text: "Reached Italy via the Bricha route across the Alps after the war" },
+        { date: "Jun 1946", text: "Immigrated to Eretz Israel aboard the ship Josiah Wedgwood" },
+        { date: "Aug 1946", text: "Married Leopold (Yehuda) Maimon" }
+      ],
+      links: [
+        { label: "haGalil — \"Wer in Auschwitz war, träumt jede Nacht davon\" (mentions Aviva)", url: "https://www.hagalil.com/2020/11/yehuda-maimon/" },
+        { label: "Obituary of her husband — Davar", url: "https://en.davar1.co.il/266188/" }
+      ],
+      notes: "Wife of Yehuda \"Poldek\" Maimon. Biographical details are drawn largely from accounts of her husband; the fate of her own family in Sosnowiec is not yet documented here. Researched June 2026."
     },
 
     /* ====================== THALLER LINE ====================== */
@@ -261,7 +274,8 @@ window.FAMILY_DATA = {
     "chaja-thaller": {
       name: "Chaja Thaller", gender: "F", line: "thaller",
       birth: { date: "1885" }, death: { deceased: true },
-      spouses: ["majer-waserman"], parents: ["abram-chaim-thaller", "malka-matylda-reich"]
+      spouses: ["majer-waserman"], parents: ["abram-chaim-thaller", "malka-matylda-reich"],
+      notes: "Mother of Leopold (Yehuda \"Poldek\" Maimon). A Yad Vashem biography of her son names his mother \"Sara\"; the records here name her Chaja Thaller — possibly a second given name or a discrepancy to verify. Her fate in the Holocaust is not yet documented here."
     },
     "zofia-thaller": {
       name: "Zofia Thaller", gender: "F", line: "thaller",
@@ -347,7 +361,8 @@ window.FAMILY_DATA = {
     "majer-waserman": {
       name: "Majer Waserman", gender: "M", line: "waserman",
       birth: { date: "Nov 18, 1885" }, death: { deceased: true },
-      spouses: ["chaja-thaller"], parents: ["jozef-waserman", "kendla-frost"]
+      spouses: ["chaja-thaller"], parents: ["jozef-waserman", "kendla-frost"],
+      notes: "Father of Leopold (Yehuda \"Poldek\" Maimon). A Yad Vashem biography of his son records the father's name as \"Meir\" — the Hebrew form of Majer."
     },
     "izaak-waserman": {
       name: "Izaak Waserman", gender: "M", line: "waserman",
@@ -402,14 +417,37 @@ window.FAMILY_DATA = {
     "maurycy-waserman": {
       name: "Maurycy Waserman", gender: "M", line: "waserman",
       birth: { date: "May 26, 1920", place: "Kraków" }, death: { deceased: true },
-      spouses: [], parents: ["majer-waserman", "chaja-thaller"]
+      spouses: [], parents: ["majer-waserman", "chaja-thaller"],
+      notes: "Older brother of Leopold (Yehuda \"Poldek\" Maimon). A Yad Vashem biography of his brother names an older son \"Moshe\", consistent with Maurycy (a Polish form of Moshe/Moses), born 1920. His fate is not yet documented here."
     },
     "leopold-waserman": {
       name: "Leopold Waserman", gender: "M", line: "waserman",
-      birth: { date: "Feb 2, 1924", place: "Kraków" }, death: { deceased: true },
+      birth: { date: "Feb 2, 1924", place: "Kraków" },
+      death: { date: "Nov 19, 2020", place: "Israel", deceased: true },
       spouses: ["aviva-liberman"], parents: ["majer-waserman", "chaja-thaller"],
-      alsoKnownAs: "Maimon (surname assumed after World War II)",
-      notes: "Adopted the surname \"Maimon\" after the war; the name carried by his descendants and the namesake of this family tree."
+      alsoKnownAs: "Yehuda \"Poldek\" Maimon (Mimon)",
+      occupation: "Jewish resistance fighter (Kraków underground)",
+      bio: "Known after the war as Yehuda \"Poldek\" Maimon. Born Leopold Waserman in Kraków, he studied at the city's Hebrew Gymnasium and joined the religious-Zionist Akiva youth movement in March 1940. After the Kraków Ghetto was established he joined the Jewish underground HeChalutz HaLochem (\"The Fighting Pioneer\") in the summer of 1942, serving as a coordinator of its headquarters. He took part in the Kraków resistance during the December 1942 attacks on German targets (the Cyganeria café operation). He was captured, imprisoned and tortured at Kraków's Montelupich prison, and deported to Auschwitz, where he again joined the camp underground. On January 18, 1945 he escaped the Auschwitz death march with five comrades and hid until liberation. In June 1946 he sailed to Eretz Israel aboard the Aliyah Bet ship Josiah Wedgwood together with Aviva Liberman, whom he married in August 1946; while abroad he adopted the Hebrew surname Maimon (Mimon). In later years he spoke widely to Israeli youth about his experiences and published a personal Holocaust testimony. He died on November 19, 2020, aged 96.",
+      events: [
+        { date: "Feb 2, 1924", text: "Born in Kraków as Leopold Waserman" },
+        { date: "Mar 1940", text: "Joined the Akiva religious-Zionist youth movement" },
+        { date: "Summer 1942", text: "Joined the Kraków Jewish underground, HeChalutz HaLochem" },
+        { date: "Dec 22, 1942", text: "Kraków resistance attacks on German targets (Cyganeria café operation)" },
+        { date: "1943", text: "Captured; imprisoned and tortured at Montelupich prison, then deported to Auschwitz" },
+        { date: "Jan 18, 1945", text: "Escaped the Auschwitz death march with five comrades; hid until liberation" },
+        { date: "Jun 1946", text: "Immigrated to Eretz Israel aboard the ship Josiah Wedgwood with Aviva Liberman" },
+        { date: "Aug 1946", text: "Married Aviva Liberman; adopted the surname Maimon" },
+        { date: "2019", text: "Lit a torch at Yad Vashem's Holocaust Remembrance Day ceremony" },
+        { date: "Nov 19, 2020", text: "Died in Israel, aged 96" }
+      ],
+      links: [
+        { label: "Yad Vashem — Yehuda Mimon (torchlighter biography)", url: "https://www.yadvashem.org/remembrance/archive/torchlighters/mimon.html" },
+        { label: "Obituary — Davar: \"Krakow Ghetto Fighter, Dies at 96\"", url: "https://en.davar1.co.il/266188/" },
+        { label: "Ghetto Fighters' House — Yehuda Wasserman-Maymon (Poldek)", url: "https://www.infocenters.co.il/gfh/notebook_ext.asp?book=34558&lang=eng&site=gfh" },
+        { label: "USHMM — Oral history interview with Poldek Wasserman", url: "https://collections.ushmm.org/search/catalog/irn511858" },
+        { label: "Palyam — Maimon, Yehuda (Poldek)", url: "http://www.palyam.org/English/IS/Maimon_Yehuda.pdf" }
+      ],
+      notes: "Identification is high-confidence: the family-recorded name change (Waserman → Maimon), birth on Feb 2, 1924 in Kraków, and marriage to Aviva Liberman of Sosnowiec all match the documented biography of Yehuda \"Poldek\" Maimon. Researched from public Holocaust and genealogy sources, June 2026."
     }
   }
 };
