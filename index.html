@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Maimon Family Tree</title>
   <meta name="description" content="An interactive, browsable family tree tracing the Liberman, Gelbard, Thaller and Waserman lines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-view="map">
   <header class="topbar">
     <div class="brand">
-      <button id="home-btn" class="brand-btn" title="Back to grandparents">
+      <button id="home-btn" class="brand-btn" title="Overview map">
         <span class="brand-mark">✦</span>
         <span class="brand-text">Maimon <em>Family Tree</em></span>
       </button>
@@ -22,12 +22,29 @@
       <div id="search-results" class="search-results"></div>
     </div>
     <div class="topbar-actions">
-      <button id="export-btn" class="btn btn-ghost" title="Download an updated data file to commit">⬇ Export data</button>
+      <button id="export-btn" class="btn btn-ghost" title="Download an updated data file to commit">⬇ Export</button>
     </div>
   </header>
 
   <nav class="subbar">
+    <div class="view-toggle">
+      <button class="view-btn" data-view="map">⊹ Map</button>
+      <button class="view-btn" data-view="explore">⌖ Explore</button>
+    </div>
     <button id="back-btn" class="btn btn-small" disabled>← Back</button>
+
+    <div id="map-controls" class="map-controls">
+      <div class="map-mode">
+        <button class="map-mode-btn active" data-mode="lineage" title="Direct ancestors & descendants">Direct line</button>
+        <button class="map-mode-btn" data-mode="everyone" title="Everyone in the records">Everyone</button>
+      </div>
+      <div class="zoom-controls">
+        <button id="zoom-out" class="zoom-btn" title="Zoom out">−</button>
+        <button id="zoom-fit" class="zoom-btn" title="Fit to screen">Fit</button>
+        <button id="zoom-in" class="zoom-btn" title="Zoom in">+</button>
+      </div>
+    </div>
+
     <div id="breadcrumb" class="breadcrumb"></div>
     <div class="legend">
       <span class="legend-title">Lines:</span>
@@ -39,27 +56,52 @@
   </nav>
 
   <main class="layout">
-    <section class="canvas">
-      <svg id="connectors" class="connectors"></svg>
-      <div id="stage" class="stage"></div>
+    <!-- Overview map -->
+    <section id="map-wrap" class="map-wrap">
+      <div id="map-inner" class="map-inner"></div>
+      <div class="map-hint">Drag to pan · scroll or pinch to zoom · tap a person for details</div>
     </section>
+
+    <!-- Person-centered explorer -->
+    <div id="canvas-wrap" class="canvas-wrap" style="display:none">
+      <section class="canvas">
+        <svg id="connectors" class="connectors"></svg>
+        <div id="stage" class="stage"></div>
+      </section>
+    </div>
+
     <aside id="detail" class="detail"></aside>
   </main>
 
+  <!-- Edit details modal -->
   <div id="editor" class="modal">
     <div class="editor-backdrop"></div>
     <div class="editor-panel">
       <button class="editor-close" aria-label="Close">×</button>
       <div class="editor-body"></div>
       <div class="editor-footer">
-        <span class="hint">Saved in your browser. Use “Export data” to make it permanent.</span>
+        <span class="hint">Saved in your browser. Use “Export” to make it permanent.</span>
         <button class="btn editor-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add relative modal -->
+  <div id="add-modal" class="modal">
+    <div class="add-backdrop editor-backdrop"></div>
+    <div class="editor-panel add-panel">
+      <button class="add-close editor-close" aria-label="Close">×</button>
+      <div class="add-body"></div>
+      <div class="editor-footer">
+        <span class="hint">New people are saved in your browser. Use “Export” to keep them.</span>
+        <button class="btn add-save">Add person</button>
       </div>
     </div>
   </div>
 
   <script src="data/people.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -16,15 +16,37 @@ they all converge on — **Aviva Liberman** (b. 1924, Sosnowiec) and her husband
 
 ## Using it
 
-Open `index.html` in any browser — no build step or server required.
+Open `index.html` in any browser — no build step or server required. There are
+two ways to view the family:
 
-- **Browse** — the view centers on one person, showing their parents above,
-  spouse beside, siblings around, and children below. Click any relative to
-  recenter the tree on them.
+### Map (overview)
+A single chart of the whole family: the four ancestral lines fan up and
+**converge** into the grandparents, Aviva & Leopold, with descendants growing
+below. Drag to pan, scroll/pinch to zoom, and use **Fit** to frame everything.
+Tap any person to open their profile.
+
+- **Direct line** shows only direct ancestors and descendants (the clean
+  convergence). **Everyone** shows all relatives recorded in the reports.
+
+### Explore (person-centered)
+Centers on one person — parents above, spouse beside, siblings around, children
+below. Click any relative to recenter on them. Good for focused browsing of a
+branch.
+
+Both views share:
 - **Search** — find anyone by name or birthplace from the top bar.
-- **Lines** — the colored legend jumps to the top of each ancestral line.
-- **Details** — every person has a side panel with their facts, relationships,
-  and any supplemental information.
+- **Lines** — the colored legend jumps to each ancestral line.
+- **Details** — a side panel with each person's facts, relationships, and
+  supplemental information.
+
+## Growing the tree (a living document)
+
+The records end with the grandparents, but the tree is meant to keep growing.
+Open anyone's detail panel and use **+ Child**, **+ Spouse**, or **+ Parent** to
+add new family members — their children, grandchildren, and so on. Added people
+appear immediately in both views (drawn with a dashed outline) and can be
+deleted or edited. Use **⬇ Export** to save your additions permanently (see
+below).
 
 ## Adding supplemental information
 
@@ -44,8 +66,9 @@ You can also edit `data/people.js` directly; it is plain, commented data.
 index.html        — page shell
 css/styles.css    — styling
 data/people.js    — the genealogy data (edit this to add info permanently)
-js/store.js       — data layer: merges edits, derives relationships
-js/app.js         — the interactive navigator, detail panel, search, editor
+js/store.js       — data layer: merges edits & additions, derives relationships
+js/layout.js      — generational layout engine for the overview map
+js/app.js         — map + explorer views, detail panel, search, editor, add
 ```
 
 ## Notes & caveats
